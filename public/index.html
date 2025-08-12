@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bulls and Cows</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <h1>Bulls and Cows</h1>
+    <p id="game-status">Bir seçenek seçin.</p>
+
+    <!-- Home Screen -->
+    <div id="home-screen">
+        <button id="create-room-btn">Oda Oluştur</button>
+        <button id="join-room-btn">Odaya Katıl</button>
+        <button id="create-bot-room-btn">Bot ile Oyna</button>
+    </div>
+
+    <!-- Create Room Screen -->
+    <div id="create-room-screen" class="hidden">
+        <p>Oda ID: <span id="room-id-display"></span></p>
+        <p>Rakip bekleniyor...</p>
+    </div>
+
+    <!-- Join Room Screen -->
+    <div id="join-room-screen" class="hidden">
+        <input type="text" id="room-id-input" placeholder="Oda ID gir">
+        <button id="submit-join-btn">Katıl</button>
+    </div>
+
+    <!-- Setup Screen -->
+    <div id="setup-screen" class="hidden">
+        <input type="text" id="secret-number-input" placeholder="4 haneli sayı gir">
+        <button id="set-number-btn">Onayla</button>
+        <p id="my-secret-display" class="my-secret"></p>
+    </div>
+
+    <!-- Game Screen -->
+    <div id="game-screen" class="hidden">
+        <p id="my-secret-display-in-game" class="my-secret"></p>
+        <input type="text" id="guess-input" placeholder="Tahmin">
+        <button id="guess-btn">Tahmin Et</button>
+        <h3>Senin Tahminlerin</h3>
+        <ul id="my-guesses"></ul>
+        <h3>Rakibin Tahminleri</h3>
+        <ul id="opponent-guesses"></ul>
+    </div>
+
+    <!-- End Screen -->
+    <div id="end-screen" class="hidden">
+        <p id="end-message"></p>
+        <button id="back-to-menu-btn">Ana Menü</button>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="client.js"></script>
+</body>
+
+</html>

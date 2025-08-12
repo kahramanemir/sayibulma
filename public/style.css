@@ -1,0 +1,40 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    background: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    margin: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+.result.plus {
+    color: green;
+    font-weight: bold;
+}
+
+.result.minus {
+    color: red;
+    font-weight: bold;
+}
+
+.my-secret {
+    background: yellow;
+    padding: 5px;
+    font-weight: bold;
+    display: inline-block;
+    margin-top: 10px;
+}
