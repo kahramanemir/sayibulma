@@ -4,55 +4,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bulls and Cows</title>
+    <title>Sayı Bulmaca Oyunu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Bulls and Cows</h1>
-    <p id="game-status">Bir seçenek seçin.</p>
+    <div id="game-container">
+        <h1>Sayı Bulmaca Oyunu</h1>
+        <h2 id="game-status">Sunucuya bağlanılıyor...</h2>
 
-    <!-- Home Screen -->
-    <div id="home-screen">
-        <button id="create-room-btn">Oda Oluştur</button>
-        <button id="join-room-btn">Odaya Katıl</button>
-        <button id="create-bot-room-btn">Bot ile Oyna</button>
-    </div>
+        <!-- Gizli sayı sadece kendi ekranında görünür -->
+        <div id="my-secret-display" class="secret-display"></div>
 
-    <!-- Create Room Screen -->
-    <div id="create-room-screen" class="hidden">
-        <p>Oda ID: <span id="room-id-display"></span></p>
-        <p>Rakip bekleniyor...</p>
-    </div>
+        <!-- Ana Ekran -->
+        <div id="home-screen">
+            <button id="create-room-btn">Oda Kur</button>
+            <button id="join-room-btn">Odaya Katıl</button>
+            <button id="create-bot-room-btn" class="bot-btn">🤖 Bot ile Oyna</button>
+        </div>
 
-    <!-- Join Room Screen -->
-    <div id="join-room-screen" class="hidden">
-        <input type="text" id="room-id-input" placeholder="Oda ID gir">
-        <button id="submit-join-btn">Katıl</button>
-    </div>
+        <!-- Oda Kurma Bekleme Ekranı -->
+        <div id="create-room-screen" class="hidden">
+            <p>Arkadaşının katılması için aşağıdaki kodu paylaş:</p>
+            <div id="room-id-display"></div>
+            <p class="waiting-text">Rakip bekleniyor...</p>
+        </div>
 
-    <!-- Setup Screen -->
-    <div id="setup-screen" class="hidden">
-        <input type="text" id="secret-number-input" placeholder="4 haneli sayı gir">
-        <button id="set-number-btn">Onayla</button>
-        <p id="my-secret-display" class="my-secret"></p>
-    </div>
+        <!-- Odaya Katılma Ekranı -->
+        <div id="join-room-screen" class="hidden">
+            <p>Arkadaşından aldığın oda kodunu gir:</p>
+            <input type="text" id="room-id-input" maxlength="6" placeholder="Oda Kodu">
+            <button id="submit-join-btn">Katıl</button>
+        </div>
 
-    <!-- Game Screen -->
-    <div id="game-screen" class="hidden">
-        <p id="my-secret-display-in-game" class="my-secret"></p>
-        <input type="text" id="guess-input" placeholder="Tahmin">
-        <button id="guess-btn">Tahmin Et</button>
-        <h3>Senin Tahminlerin</h3>
-        <ul id="my-guesses"></ul>
-        <h3>Rakibin Tahminleri</h3>
-        <ul id="opponent-guesses"></ul>
-    </div>
+        <!-- Sayı Belirleme Ekranı -->
+        <div id="setup-screen" class="hidden">
+            <p>Rakamları farklı, 4 basamaklı bir sayı girin ve başlayın:</p>
+            <input type="text" id="secret-number-input" maxlength="4" placeholder="Örn: 1453">
+            <button id="set-number-btn">Sayıyı Belirle</button>
+        </div>
 
-    <!-- End Screen -->
-    <div id="end-screen" class="hidden">
-        <p id="end-message"></p>
-        <button id="back-to-menu-btn">Ana Menü</button>
+        <!-- Ana Oyun Ekranı -->
+        <div id="game-screen" class="hidden">
+            <div id="guess-area">
+                <input type="text" id="guess-input" maxlength="4" placeholder="Tahmininiz">
+                <button id="guess-btn">Tahmin Et</button>
+            </div>
+            <div id="history-area">
+                <div class="history-list">
+                    <h3>Tahminlerim</h3>
+                    <ul id="my-guesses"></ul>
+                </div>
+                <div class="history-list">
+                    <h3>Rakibin Tahminleri</h3>
+                    <ul id="opponent-guesses"></ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Oyun Bitti Ekranı -->
+        <div id="end-screen" class="hidden">
+            <h2 id="end-message"></h2>
+            <button id="back-to-menu-btn">Ana Menüye Dön</button>
+        </div>
     </div>
 
     <script src="/socket.io/socket.io.js"></script>
