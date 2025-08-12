@@ -63,6 +63,7 @@ function smartBotGuess(possibleNumbers, history) {
         return possibleNumbers[Math.floor(Math.random() * possibleNumbers.length)];
     }
 
+
     let bestGuess = null;
     let minMaxGroups = Infinity;
 

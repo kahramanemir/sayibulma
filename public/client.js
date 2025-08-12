@@ -92,12 +92,6 @@ setNumberBtn.addEventListener('click', () => {
     const number = secretInput.value;
     if (number.length === 4 && /^\d+$/.test(number)) {
         socket.emit('setNumber', number);
-
-        document.getElementById("my-secret-display").textContent =
-            "Sizin sayınız: " + number;
-        document.getElementById("my-secret-display-in-game").textContent =
-            "Sizin sayınız: " + number;
-
         secretInput.disabled = true;
         setNumberBtn.disabled = true;
     } else {
@@ -219,12 +213,6 @@ function startBotGame() {
             botSecretNumber = generateRandomNumber();
             botCandidates = generateAllPossibleNumbers();
             botHistory = [];
-
-            document.getElementById("my-secret-display").textContent =
-                "Sizin sayınız: " + userSecretNumber;
-            document.getElementById("my-secret-display-in-game").textContent =
-                "Sizin sayınız: " + userSecretNumber;
-
             secretInput.disabled = true;
             setNumberBtn.disabled = true;
             showScreen(gameScreen);
